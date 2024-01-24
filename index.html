@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script defer src="./testCheckbox.js"></script>
-    <link id="style-link" rel="stylesheet" href="./styleTest.css">
+    <script defer src="./main.js"></script>
+    <link id="style-link" rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.min.js"></script>
@@ -38,7 +38,7 @@
         </div>
         <div id="buttonSection">
             <button id="homeButton" class="dark-mode-toggle">Home</button>
-            <button id="graphButton" class="dark-mode-toggle">Graph</button>
+            <button id="graphButton" class="dark-mode-toggle">Live</button>
             <button id="aboutButton" class="dark-mode-toggle">About</button>
         </div>
     </header>
@@ -46,10 +46,14 @@
     <div id="limitExceededModal" class="modal">
         <div class="modalContent">
             <span class="close" onclick="closeLimitExceededModal()">&times;</span>
-            <h2>Limited Favoris</h2>
+            <div class="modalHeader">
+                <h2>Limited Favoris <img src="./assets/icons/astronaut.png"></h2>
+            </div>
             <div id="favorisCoin">
             </div>
-            <button onclick="closeLimitExceededModal()">Close</button>
+            <div class="modalFooter">
+                <button onclick="closeLimitExceededModal()">NO NEED</button>
+            </div>
         </div>
     </div>
 
@@ -63,14 +67,25 @@
 
         </div>
 
-        <div id="graph"
-            style="color: #333; font-family: 'Arial', sans-serif; padding: 20px; max-width: 600px; margin: 0 auto;">
-            <p style="font-size: 70px; line-height: 1.6; color:aliceblue; text-align:center"> In Progress ... </p>
+        <div id="graph" style="color: #333; font-family: 'Arial', sans-serif; padding: 20px; margin: 0 auto;">
+            <p id="pGraph" style="font-size: 70px; line-height: 1.6; color:aliceblue; text-align:center"> In Progress
+                ... <img src="./assets/icons/space.png" alt=""></p>
+            <p style="font-size: 55px; line-height: 1.6; color:aliceblue;text-align:center" id="spanGraph">
+                <img src="./assets/icons/astronautF.png" alt=""> Choose some coins
+            </p>
+            <p id="pGraph"
+                style="font-size: 35px; line-height: 1.6; color: aliceblue; width: 90vw; text-align: center;">
+                there is no graph :/ but the table gives you the new value of your favorite
+                crypto every 2 seconds
+                <img src="./assets/icons/astronautHome.png" alt="Astronaut">
+            </p>
+            <div id="graphContainer"></div>
         </div>
 
         <div id="about"
-            style="color: #333; font-family: 'Arial', sans-serif; padding: 20px; max-width: 600px; margin: 0 auto;">
-            <p style="font-size: 25px; line-height: 1.6; color:aliceblue; text-align:center">
+            style="color: #333; font-family: 'Arial', sans-serif; padding: 20px; max-width: 50%; margin: 0 auto; backdrop-filter: blur(3px);">
+            <img src="./assets/icons/astronautFace.png" alt="">
+            <p style="font-size: 25px; line-height: 1.6; color: aliceblue; text-align: justify;">
                 Working on the cryptocurrency project for my training was truly exciting! I thoroughly enjoyed the
                 concept and had a wonderful experience applying my development skills. It proved to be a rewarding
                 endeavor that fueled my enthusiasm for future projects. As an enthusiastic Full-Stack Developer in
@@ -79,10 +94,12 @@
                 studies to expand my knowledge and capabilities.
             </p>
             <div style="margin-top: 20px; display:flex; justify-content:center; gap:10px;">
-                <a href="linkedin.com/in/jarod-rosinoff-575109193"><img src="./assets/logo/linkedin.png"
-                        alt="linkedin"></a>
-                <a href="github.com/jajarosi"><img src="./assets/logo/github.png" alt="github"></a>
+                <a href="https://www.linkedin.com/in/jarod-rosinoff-575109193" target="_blank"><img
+                        src="./assets/logo/linkedin.png" alt="linkedin"></a>
+                <a href="https://www.github.com/jajarosi" target="_blank"><img src="./assets/logo/github.png"
+                        alt="github"></a>
             </div>
+
         </div>
 
     </main>

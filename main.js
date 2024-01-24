@@ -186,13 +186,19 @@ function changeCoin(button) {
     const parentDiv = button.parentNode;
     const selectedCoinId = parentDiv.getAttribute("data-id");
     const modalContent = document.getElementById("favorisCoin")
+    const modalHeader = document.querySelector("#limitExceededModal .modalHeader");
+    const modalFooter = document.querySelector("#limitExceededModal .modalFooter");
     const selectedCoinIndex = selectedFavorites.findIndex(fav => fav && fav.id === selectedCoinId)
     if (selectedCoinIndex !== -1) {
         selectedFavorites.splice(selectedCoinIndex, 1)
         addToFav(pendingCoinId);
-        modalContent.innerHTML = "<h1>🪙favorite succesfully updated🪙</h1>"
+        modalHeader.style.display = "none";
+        modalFooter.style.display = "none";
+        modalContent.innerHTML = `<div class="successChange"><h1 style="padding:15px">favorite succesfully updated</h1><img src="./assets/icons/astronautS.png"></div>`
         setTimeout(() => {
             closeLimitExceededModal()
+            modalHeader.style.display = "block";
+            modalFooter.style.display = "flex";
         }, 2000)
     } else {
         console.error("The selected coin was not found in the favorites.")
@@ -204,7 +210,7 @@ function changeCoin(button) {
 
 document.addEventListener('DOMContentLoaded', function () {
     const sections = ['home', 'graph', 'about'];
-
+    let graphInterval;
     sections.forEach(sectionId => {
         document.getElementById(`${sectionId}Button`).addEventListener('click', () => { showSection(sectionId) })
     });
@@ -216,8 +222,57 @@ document.addEventListener('DOMContentLoaded', function () {
         sections.forEach(s => document.getElementById(s).style.display = s === sectionId ? 'block' : 'none');
 
         document.getElementById('searchInput').style.display = sectionId === 'home' ? 'block' : 'none';
+
+        if (sectionId === 'graph') {
+            let graphContainer = document.getElementById("graphContainer");
+            let spanGraph = document.getElementById("spanGraph")
+            if (selectedFavorites.length === 0) {
+                clearInterval(graphInterval);
+                graphContainer.style.display = 'none';
+            } else {
+                console.log("favoris from graph", selectedFavorites);
+                fetchGraphData(selectedFavorites);
+                graphInterval = setInterval(() => fetchGraphData(selectedFavorites), 2000);
+                graphContainer.style.display = 'block';
+                spanGraph.style.display = 'none';
+            }
+        } else {
+            clearInterval(graphInterval);
+
+            let graphContainer = document.getElementById("graphContainer");
+            graphContainer.style.display = 'none';
+        }
+
     }
 })
 
 
 // ---------------------------------------------- GRAPH ---------------------------------------------------------------------
+
+async function fetchGraphData(coins) {
+    try {
+        let favContainer = document.getElementById("graphContainer")
+        let symbol = coins.map(coin => coin.symbol.toUpperCase()).join(",")
+        const response = await fetch(`https://min-api.cryptocompare.com/data/pricemulti?fsyms=${symbol}&tsyms=USD`);
+        if (!response.ok) throw new Error(`Error fetching coins. Status: ${response.status}`);
+        const allCoinsData = await response.json();
+        console.log("fav :", allCoinsData)
+        displayFavValue(allCoinsData, favContainer)
+    } catch (error) {
+        console.error("Error fetching data:", error.message);
+    }
+}
+
+function displayFavValue(coins, container) {
+    let coinsValue = Object.entries(coins).map(([symbol, data]) => `${symbol}: ${data.USD}`).join(" ; ");
+    console.log("coins value", coinsValue);
+    let tableContent = `<table class="tableFav"><tr><th>Coin</th><th>Value (USD)</th></tr>`;
+
+    Object.entries(coins).forEach(([symbol, data]) => {
+        tableContent += `<tr><td>${symbol}</td><td>${data.USD}</td></tr>`;
+    });
+
+    tableContent += "</table>";
+
+    container.innerHTML = tableContent
+}

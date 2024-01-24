@@ -26,6 +26,24 @@ header {
     position: relative;
 }
 
+@media screen and (max-width: 1200px) {
+    #title {
+        font-size: 150px;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    #title {
+        font-size: 100px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    #title {
+        font-size: 50px;
+    }
+}
+
 .titleDiv {
     display: flex;
     flex-direction: row;
@@ -178,9 +196,13 @@ img {
     align-items: center;
 }
 
-#favorisCoin {
-    display: flex;
-    gap: 10px;
+.modalHeader {
+    text-align: center;
+    padding: 20px;
+}
+
+.modalHeader h2 {
+    font-size: 56px;
 }
 
 .close {
@@ -189,7 +211,13 @@ img {
     right: 10px;
     cursor: pointer;
     z-index: 1;
-    color: black;
+    color: white;
+}
+
+#favorisCoin {
+    display: flex;
+    gap: 10px;
+    padding: 15px;
 }
 
 .favCoinModal {
@@ -197,7 +225,8 @@ img {
 }
 
 .favCoinModal button {
-    background-color: #3498db;
+    background: rgb(63, 204, 251);
+    background: linear-gradient(201deg, rgba(63, 204, 251, 1) 0%, rgba(252, 190, 70, 1) 100%);
     color: #fff;
     padding: 5px 10px;
     border: none;
@@ -205,8 +234,29 @@ img {
     cursor: pointer;
 }
 
-.favCoinModal button:hover {
-    background-color: #2980b9;
+.favCoinModal button:hover,
+.modalFooter button:hover {
+    background: rgb(63, 204, 251);
+    background: linear-gradient(201deg, rgba(63, 204, 251, 1) 0%, rgba(157, 120, 48, 1) 100%);
+}
+
+.modalFooter {
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+}
+
+.modalFooter button {
+    border: none;
+    border-radius: 8px;
+    align-self: center;
+}
+
+.successChange {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 /* ----------------- LOGO SPINNER --------------------*/
@@ -267,4 +317,31 @@ img {
     to {
         transform: rotate3d(10deg);
     }
+}
+
+/* -------------------- TABLE ------------------- */
+
+.graphContainer {
+    display: block;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th,
+td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #f5f5f5;
 }
