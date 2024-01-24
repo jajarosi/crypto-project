@@ -1,7 +1,6 @@
 const coinArray = [];
 let selectedFavorites = [];
 let displayedCoins = [];
-let selectedDuringSearch = [];
 let allDisplayedCoins = [];
 let pendingCoinId = null
 
@@ -146,7 +145,7 @@ function updateSwitches() {
     const switches = document.querySelectorAll('.customControl');
     switches.forEach((switchElement, index) => {
         const coin = coinsToCheck[index];
-        switchElement.checked = selectedFavorites.some(fav => fav && fav.id === coin.id) || selectedDuringSearch.some(sel => sel && sel.id === coin.id);
+        switchElement.checked = selectedFavorites.some(fav => fav && fav.id === coin.id);
         toggleCheckboxImage(coin.id, switchElement.checked);
     });
 
