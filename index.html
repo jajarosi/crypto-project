@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script defer src="./testCheckbox.js"></script>
+    <link id="style-link" rel="stylesheet" href="./styleTest.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="titleDiv">
+            <div id="title">
+                CRYPT&nbsp;
+            </div>
+            <div class="logoSpinner">
+                <div class="leo-border1">
+                </div>
+                <div class="leo-border2">
+                </div>
+                <div class="leo-border3">
+                </div>
+                <div class="leo-border4">
+                </div>
+            </div>
+            <div id="title">
+                &nbsp;ꓕԀ⅄ꓤƆ
+            </div>
+        </div>
+        <div id="searchDiv">
+            <input type="text" id="searchInput" placeholder="Live search crypto ...">
+        </div>
+        <div id="buttonSection">
+            <button id="homeButton" class="dark-mode-toggle">Home</button>
+            <button id="graphButton" class="dark-mode-toggle">Graph</button>
+            <button id="aboutButton" class="dark-mode-toggle">About</button>
+        </div>
+    </header>
+
+    <div id="limitExceededModal" class="modal">
+        <div class="modalContent">
+            <span class="close" onclick="closeLimitExceededModal()">&times;</span>
+            <h2>Limited Favoris</h2>
+            <div id="favorisCoin">
+            </div>
+            <button onclick="closeLimitExceededModal()">Close</button>
+        </div>
+    </div>
+
+    <main id="main">
+        <div id="home">
+            <div id="boxCoins">
+            </div>
+
+            <div id="loadingSpinner" class="spinner-border" role="status" style="display: none; position: absolute;">
+            </div>
+
+        </div>
+
+        <div id="graph"
+            style="color: #333; font-family: 'Arial', sans-serif; padding: 20px; max-width: 600px; margin: 0 auto;">
+            <p style="font-size: 70px; line-height: 1.6; color:aliceblue; text-align:center"> In Progress ... </p>
+        </div>
+
+        <div id="about"
+            style="color: #333; font-family: 'Arial', sans-serif; padding: 20px; max-width: 600px; margin: 0 auto;">
+            <p style="font-size: 25px; line-height: 1.6; color:aliceblue; text-align:center">
+                Working on the cryptocurrency project for my training was truly exciting! I thoroughly enjoyed the
+                concept and had a wonderful experience applying my development skills. It proved to be a rewarding
+                endeavor that fueled my enthusiasm for future projects. As an enthusiastic Full-Stack Developer in
+                training 🚀, I am a constant learner, currently honing my skills in Full Stack Development with an
+                expected completion in a few months. 💻 I am passionate about self-driven projects alongside my formal
+                studies to expand my knowledge and capabilities.
+            </p>
+            <div style="margin-top: 20px; display:flex; justify-content:center; gap:10px;">
+                <a href="linkedin.com/in/jarod-rosinoff-575109193"><img src="./assets/logo/linkedin.png"
+                        alt="linkedin"></a>
+                <a href="github.com/jajarosi"><img src="./assets/logo/github.png" alt="github"></a>
+            </div>
+        </div>
+
+    </main>
+</body>
+
+</html>
