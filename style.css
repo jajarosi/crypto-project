@@ -1,5 +1,6 @@
 body {
     background: url('./assets/bg/bg-full.png');
+    width: 100%;
 }
 
 /* ----------------- HEADER --------------------*/
